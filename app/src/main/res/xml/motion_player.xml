@@ -1,15 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  Copyright (C) 2018 The Android Open Source Project
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-       http://www.apache.org/licenses/LICENSE-2.0
-  Unless required by motionlicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
@@ -40,8 +29,8 @@
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            motion:layout_constraintBottom_toTopOf="@id/bottom_navi"
+            android:layout_marginBottom="60dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
 
@@ -50,10 +39,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            motion:layout_constraintBottom_toTopOf="@id/bottom_navi"
+            motion:layout_constraintBottom_toBottomOf="@id/player_container"
             motion:layout_constraintDimensionRatio="H,3:1"
-            motion:layout_constraintStart_toStartOf="@id/player_container" />
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
 
         <Constraint
             android:id="@id/contents"
@@ -70,9 +59,7 @@
             motion:layout_constraintBottom_toBottomOf="@id/player"
             motion:layout_constraintEnd_toEndOf="@+id/player"
             motion:layout_constraintStart_toStartOf="@+id/player"
-            motion:layout_constraintTop_toTopOf="@+id/player">
-            <PropertySet motion:alpha="0" />
-        </Constraint>
+            motion:layout_constraintTop_toTopOf="@+id/player"/>
 
         <Constraint
             android:id="@id/bottom_navi"
