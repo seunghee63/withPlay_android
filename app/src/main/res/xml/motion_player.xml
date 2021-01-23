@@ -17,6 +17,7 @@
             <KeyAttribute
                 android:alpha="0"
                 motion:framePosition="0"
+                android:visibility="invisible"
                 motion:motionTarget="@id/contents" />
         </KeyFrameSet>
     </Transition>
@@ -29,7 +30,6 @@
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="60dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
@@ -43,23 +43,6 @@
             motion:layout_constraintDimensionRatio="H,3:1"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
-
-        <Constraint
-            android:id="@id/contents"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            motion:layout_constraintEnd_toEndOf="@id/player"
-            motion:layout_constraintStart_toStartOf="@id/player"
-            motion:layout_constraintTop_toBottomOf="@id/player" />
-
-        <Constraint
-            android:id="@id/ic_play"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            motion:layout_constraintBottom_toBottomOf="@id/player"
-            motion:layout_constraintEnd_toEndOf="@+id/player"
-            motion:layout_constraintStart_toStartOf="@+id/player"
-            motion:layout_constraintTop_toTopOf="@+id/player"/>
 
         <Constraint
             android:id="@id/bottom_navi"
