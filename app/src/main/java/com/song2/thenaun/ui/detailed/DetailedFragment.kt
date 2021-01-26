@@ -1,12 +1,15 @@
 package com.song2.thenaun.ui.detailed
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.databinding.DataBindingUtil
 import com.song2.thenaun.R
 import com.song2.thenaun.base.BaseFragment
 import com.song2.thenaun.databinding.FragmentDetailedBinding
 import com.song2.thenaun.ui.MainActivity
+import timber.log.Timber
 
 
 class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {

@@ -9,15 +9,15 @@
         motion:motionInterpolator="linear">
 
         <OnSwipe
-            motion:dragDirection="dragDown"
+            motion:dragDirection="dragUp"
             motion:touchAnchorId="@+id/player_container"
             motion:touchAnchorSide="top" />
 
         <KeyFrameSet>
             <KeyAttribute
-                android:alpha="0"
-                motion:framePosition="0"
+                android:alpha="0.5"
                 android:visibility="invisible"
+                motion:framePosition="0"
                 motion:motionTarget="@id/contents" />
         </KeyFrameSet>
     </Transition>
@@ -44,14 +44,6 @@
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
 
-        <Constraint
-            android:id="@id/bottom_navi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintLeft_toLeftOf="parent"
-            motion:layout_constraintRight_toRightOf="parent" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@id/end">
@@ -81,14 +73,6 @@
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/player" />
-
-        <Constraint
-            android:id="@id/bottom_navi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            motion:layout_constraintLeft_toLeftOf="parent"
-            motion:layout_constraintRight_toRightOf="parent"
-            motion:layout_constraintTop_toBottomOf="parent" />
 
     </ConstraintSet>
 

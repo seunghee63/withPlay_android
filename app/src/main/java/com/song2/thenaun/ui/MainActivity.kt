@@ -1,9 +1,6 @@
 package com.song2.thenaun.ui
 
 import android.os.Bundle
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.song2.thenaun.R
