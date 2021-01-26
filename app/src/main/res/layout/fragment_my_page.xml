@@ -12,25 +12,47 @@
 
         <TextView
             android:id="@+id/favorite_top"
+            style="@style/BlackBold26"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="42dp"
             android:text="@string/favorite"
-            style="@style/BlackBold26"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
+            android:id="@+id/rv_favorite"
             android:layout_width="wrap_content"
             android:layout_height="170dp"
-            android:layout_marginStart="21dp"
             android:layout_marginTop="11dp"
             android:orientation="horizontal"
             app:layoutManager="LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/favorite_top" />
+
+        <TextView
+            android:id="@+id/recent_top"
+            style="@style/BlackBold26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="42dp"
+            android:text="@string/recent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_favorite" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recent"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:layout_marginTop="11dp"
+            android:orientation="horizontal"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recent_top" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
