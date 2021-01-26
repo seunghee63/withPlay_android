@@ -9,18 +9,16 @@ import com.song2.thenaun.base.recyclerview.BaseListAdapter
 import com.song2.thenaun.base.recyclerview.BaseViewHolder
 import com.song2.thenaun.databinding.ItemBookmarkBinding
 
-class BookmarkAdapter : BaseListAdapter<BookmarkItem>(BR.item) {
+class BookmarkAdapter : BaseListAdapter<BookmarkItem, ItemBookmarkBinding>(BR.item) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<BookmarkItem> {
         super.onCreateViewHolder(parent, viewType)
-
         val inflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<ItemBookmarkBinding>(inflater, viewType, parent, false)
-
-        return BookmarkHolder(binding as ItemBookmarkBinding)
+        return BookmarkHolder(binding)
     }
 
-    override fun getItemViewType(position: Int) = R.layout.item_bookmark
-
+    override fun getItemViewTypeByItem(item: BookmarkItem): Int = R.layout.item_bookmark
 }
 
-class BookmarkHolder(val binding: ItemBookmarkBinding) : BaseViewHolder<BookmarkItem>(binding,BR.item)
+class BookmarkHolder(val binding: ItemBookmarkBinding) : BaseViewHolder<BookmarkItem>(binding, BR.item)
