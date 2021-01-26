@@ -3,7 +3,7 @@ package com.song2.thenaun.base.recyclerview
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-class BaseViewHolder<T : BaseItem>(
+open class BaseViewHolder<T : BaseItem>(
     private val binding: ViewDataBinding,
     private val variableId: Int
 ) : RecyclerView.ViewHolder(binding.root) {

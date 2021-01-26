@@ -3,4 +3,5 @@
 
     <string name="home">Home</string>
     <string name="my_page">MyPage</string>
+    <string name="favorite">즐겨찾기</string>
 </resources>
