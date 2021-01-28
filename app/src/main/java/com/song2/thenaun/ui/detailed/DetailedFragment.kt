@@ -8,6 +8,7 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
@@ -58,7 +59,9 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
         val testURL = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
 
         playerView = binding.player
-        player = SimpleExoPlayer.Builder(requireContext()).build()
+        player = SimpleExoPlayer.Builder(requireContext())
+            .setTrackSelector(DefaultTrackSelector(requireContext()))
+            .build()
         playerView.player = player
         playerView.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIXED_WIDTH
 
@@ -89,10 +92,10 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
     private fun playVideo(dataSource: ProgressiveMediaSource) {
         player.addMediaSource(dataSource)
         player.playWhenReady = true
-        player.play()
     }
 
     private fun releasePlayer() {
+        player.playWhenReady = false
         player.release()
     }
 
@@ -103,7 +106,6 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
 
     override fun onStop() {
         super.onStop()
-        player.playWhenReady = false
         releasePlayer()
     }
 
