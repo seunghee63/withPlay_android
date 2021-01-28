@@ -29,7 +29,9 @@
             android:layout_height="0dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:resize_mode="fit"
+            app:use_controller="true" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/contents"
