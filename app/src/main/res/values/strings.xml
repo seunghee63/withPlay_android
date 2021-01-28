@@ -3,4 +3,5 @@
 
     <string name="home">Home</string>
     <string name="my_page">MyPage</string>
+    <string name="chat_by_time">시간별 채팅</string>
 </resources>
