@@ -1,20 +1,9 @@
 package com.song2.thenaun.ui.detailed
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.activityViewModels
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
-import com.google.android.exoplayer2.ui.PlayerView
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import com.google.android.exoplayer2.util.Log
-import com.google.android.exoplayer2.util.Util
 import com.song2.thenaun.R
 import com.song2.thenaun.base.BaseFragment
 import com.song2.thenaun.databinding.FragmentDetailedBinding
@@ -27,14 +16,13 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
 
     private val playViewModel: PlayViewModel by activityViewModels()
 
-    lateinit var playerView: PlayerView
-    lateinit var player: SimpleExoPlayer
+    lateinit var playerView: CustomExoPlayer
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initMotionLayout()
-        initExoPlayer()
+        initCustomExoPlayer()
     }
 
     override fun initObserver() {}
@@ -59,62 +47,29 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
         })
     }
 
-    private fun initExoPlayer() {
+    private fun initCustomExoPlayer() {
         val testURL = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
 
+        println(binding.player)
+        println(binding.contents)
+
         playerView = binding.player
-        player = SimpleExoPlayer.Builder(requireContext())
-            .setTrackSelector(DefaultTrackSelector(requireContext()))
-            .build()
-        playerView.player = player
-        playerView.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIXED_WIDTH
-
-        player.addListener(object : Player.EventListener {
-            override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-                val stateString = when (playbackState) {
-                    Player.STATE_IDLE -> "ExoPlayer.STATE_IDLE"
-                    Player.STATE_BUFFERING -> "ExoPlayer.STATE_BUFFERING"
-                    Player.STATE_READY -> "ExoPlayer.STATE_READY"
-                    Player.STATE_ENDED -> "ExoPlayer.STATE_ENDED"
-                    else -> "UNKNOWN_STATE"
-                }
-                Log.e("exoplayer", "changed state to $stateString, playWhenReady: $playWhenReady")
-            }
-        })
-
-        playVideo(setMediaSource(testURL))
-    }
-
-    private fun setMediaSource(url: String): ProgressiveMediaSource {
-        val mediaItem = MediaItem.fromUri(Uri.parse(url))
-        val userAgent = Util.getUserAgent(requireContext(), requireContext().applicationInfo.name)
-        val factory = DefaultDataSourceFactory(requireContext(), userAgent)
-
-        return ProgressiveMediaSource.Factory(factory).createMediaSource(mediaItem)
-    }
-
-    private fun playVideo(dataSource: ProgressiveMediaSource) {
-        player.addMediaSource(dataSource)
-        player.playWhenReady = true
-    }
-
-    private fun releasePlayer() {
-        player.playWhenReady = false
-        player.release()
+        playerView.initPlayer()
+        playerView.playVideo(testURL)
     }
 
     override fun onResume() {
         super.onResume()
-        player.playWhenReady = true
+        playerView.readyPlayer()
     }
 
     override fun onStop() {
         super.onStop()
-        releasePlayer()
+        playerView.releasePlayer()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        releasePlayer()
+        playerView.releasePlayer()
     }
 }
