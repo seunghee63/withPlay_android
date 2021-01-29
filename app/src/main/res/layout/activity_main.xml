@@ -4,15 +4,19 @@
 
     <data>
 
+        <variable
+            name="playViewModel"
+            type="com.song2.thenaun.ui.PlayViewModel" />
+
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/motionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:bindProgress="@{playViewModel.progress}"
         app:layoutDescription="@xml/motion_player_main"
         app:motionDebug="SHOW_ALL">
-
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navi"
