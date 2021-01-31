@@ -2,6 +2,9 @@ package com.song2.thenaun.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.song2.thenaun.R
 import com.song2.thenaun.base.BaseFragment
@@ -12,13 +15,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val layoutResId: Int
         get() = R.layout.fragment_home
 
+    private val viewModel = HomeViewModel()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            vm = viewModel
+        }
 
         initialSetting()
     }
 
-    override fun initObserver() {}
+    override fun initObserver() {
+        viewModel.searchBtn.observe(viewLifecycleOwner, Observer {
+            val keyword = binding.etSearch.text.toString()
+
+            if (keyword.isNotEmpty())
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundleOf("keyword" to keyword))
+        })
+    }
 
     private fun initialSetting() {
 
