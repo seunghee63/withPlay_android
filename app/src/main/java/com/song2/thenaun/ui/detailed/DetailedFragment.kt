@@ -50,9 +50,6 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
     private fun initCustomExoPlayer() {
         val testURL = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
 
-        println(binding.player)
-        println(binding.contents)
-
         playerView = binding.player
         playerView.initPlayer()
         playerView.playVideo(testURL)

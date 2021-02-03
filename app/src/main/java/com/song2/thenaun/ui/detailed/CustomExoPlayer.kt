@@ -67,7 +67,7 @@ open class CustomExoPlayer(context: Context, attrs: AttributeSet?, defStyleAttr:
 
     override fun onResume() {
         super.onResume()
-        player.playWhenReady = true
+        readyPlayer()
     }
 
     override fun onPause() {
