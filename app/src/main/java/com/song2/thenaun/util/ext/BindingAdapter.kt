@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.song2.thenaun.R
 
 
 @BindingAdapter("imageUrl")
@@ -21,11 +22,11 @@ fun ImageView.bindImageUrl(imageUrl: String?) {
 
 @BindingAdapter("playCnt","viewCnt")
 fun TextView.bindNumData(playCnt: Int, viewCnt: Int) {
-    this.text = "재생수 ${playCnt}회 | 시청자수 ${viewCnt}명"
+    this.text = String.format(resources.getString(R.string.play_cnt),playCnt) + String.format(resources.getString(R.string.viewers_cnt),viewCnt)
 }
 
 
 @BindingAdapter("setVideoData")
-fun TextView.bindData(cnt: Int) {
-    this.text = "재생수 ${cnt}회"
+fun TextView.bindVideoData(cnt: Int) {
+    this.text = String.format(resources.getString(R.string.play_cnt),cnt)
 }
