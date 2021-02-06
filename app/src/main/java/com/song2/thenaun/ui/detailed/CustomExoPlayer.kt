@@ -19,7 +19,7 @@ open class CustomExoPlayer(context: Context, attrs: AttributeSet?, defStyleAttr:
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    private lateinit var player: SimpleExoPlayer
+    private var player: SimpleExoPlayer? = null
     private var listener = object : Player.EventListener {
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
             val stateString = when (playbackState) {
@@ -34,27 +34,33 @@ open class CustomExoPlayer(context: Context, attrs: AttributeSet?, defStyleAttr:
     }
 
     fun initPlayer() {
-        player = SimpleExoPlayer.Builder(context)
-            .setTrackSelector(DefaultTrackSelector(context))
-            .build()
-        setPlayer(player)
-        resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIXED_WIDTH
-        player.addListener(listener)
+        if (player == null) {
+            player = SimpleExoPlayer.Builder(context)
+                .setTrackSelector(DefaultTrackSelector(context))
+                .build()
+            setPlayer(player)
+            resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIXED_WIDTH
+            player?.addListener(listener)
+        }
     }
 
     fun playVideo(url: String) {
         val dataSource = setMediaSource(url)
-        player.addMediaSource(dataSource)
-        player.playWhenReady = true
-    }
 
-    fun releasePlayer() {
-        player.playWhenReady = false
-        player.release()
+        player?.let {
+            it.addMediaSource(dataSource)
+            it.playWhenReady = true
+        }
     }
 
     fun readyPlayer() {
-        player.playWhenReady = true
+        player?.playWhenReady = true
+    }
+
+    fun releasePlayer() {
+        player?.playWhenReady = false
+        player?.release()
+        player = null
     }
 
     private fun setMediaSource(url: String): ProgressiveMediaSource {
@@ -67,11 +73,13 @@ open class CustomExoPlayer(context: Context, attrs: AttributeSet?, defStyleAttr:
 
     override fun onResume() {
         super.onResume()
+
         readyPlayer()
     }
 
     override fun onPause() {
         super.onPause()
+
         releasePlayer()
     }
 }

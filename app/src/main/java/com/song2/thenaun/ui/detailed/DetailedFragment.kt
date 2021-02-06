@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.activityViewModels
+import com.google.android.exoplayer2.util.Util
 import com.song2.thenaun.R
 import com.song2.thenaun.base.BaseFragment
 import com.song2.thenaun.databinding.FragmentDetailedBinding
@@ -16,13 +17,12 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
 
     private val playViewModel: PlayViewModel by activityViewModels()
 
-    lateinit var playerView: CustomExoPlayer
+    private val playerView: CustomExoPlayer by lazy { binding.player }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initMotionLayout()
-        initCustomExoPlayer()
     }
 
     override fun initObserver() {}
@@ -50,23 +50,41 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
     private fun initCustomExoPlayer() {
         val testURL = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
 
-        playerView = binding.player
         playerView.initPlayer()
         playerView.playVideo(testURL)
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        if (Util.SDK_INT > 23) {
+            initCustomExoPlayer()
+            if (playerView.player != null)
+                playerView.onResume()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
-        playerView.readyPlayer()
+
+        if (Util.SDK_INT <= 23) {
+            initCustomExoPlayer()
+            if (playerView.player != null)
+                playerView.onResume()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        if (Util.SDK_INT <= 23 && playerView.player != null)
+            playerView.onPause()
     }
 
     override fun onStop() {
         super.onStop()
-        playerView.releasePlayer()
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        playerView.releasePlayer()
+        if (Util.SDK_INT > 23 && playerView.player != null)
+            playerView.onPause()
     }
 }
