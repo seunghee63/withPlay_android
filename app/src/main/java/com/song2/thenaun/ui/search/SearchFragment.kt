@@ -13,7 +13,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.getString("keyword")?.let {
+        arguments?.getString(resources.getString(R.string.search_keyword))?.let {
             binding.etSearch.setText(it)
         }
 

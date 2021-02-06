@@ -11,4 +11,6 @@
     <string name="play_and_viewer_cnt">"재생수 %d회 | 시청자수 %d명"</string>
     <string name="play_cnt">"재생수 %d회"</string>    
     <string name="chat_by_time">시간별 채팅</string>
+    <string name="search_keyword">keyword</string>
+
 </resources>

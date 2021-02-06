@@ -32,7 +32,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             val keyword = binding.etSearch.text.toString()
 
             if (keyword.isNotEmpty())
-                findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundleOf("keyword" to keyword))
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundleOf(resources.getString(R.string.search_keyword) to keyword))
         })
     }
 
