@@ -8,6 +8,6 @@
     <string name="hot_video">인기동영상</string>
     <string name="now_video">지금 시청중인 동영상</string>
 
+    <string name="play_and_viewer_cnt">"재생수 %d회 | 시청자수 %d명"</string>
     <string name="play_cnt">"재생수 %d회"</string>
-    <string name="viewers_cnt">" | 시청자수 %d명"</string>
 </resources>
