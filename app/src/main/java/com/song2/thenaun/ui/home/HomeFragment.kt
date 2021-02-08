@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initObserver() {
-        viewModel.searchBtn.observe(viewLifecycleOwner, Observer {
+        viewModel.searchEvent.observe(viewLifecycleOwner, Observer {
             val keyword = binding.etSearch.text.toString()
 
             if (keyword.isNotEmpty())
