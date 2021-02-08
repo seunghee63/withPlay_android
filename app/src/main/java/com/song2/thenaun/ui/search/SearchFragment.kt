@@ -13,7 +13,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.getString(resources.getString(R.string.search_keyword))?.let {
+        arguments?.getString(KEYWORD)?.let {
             binding.etSearch.setText(it)
         }
 
@@ -36,4 +36,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         SearchItem("", "https://pm1.narvii.com/6799/59bddad174e3dcd4ad46ca12f6f8359bba837215v2_hq.jpg", "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", "strawberries", 300),
         SearchItem("", "https://pm1.narvii.com/6799/59bddad174e3dcd4ad46ca12f6f8359bba837215v2_hq.jpg", "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", "strawberries", 300)
     )
+
+    companion object{
+        const val KEYWORD = "keyword"
+    }
 }

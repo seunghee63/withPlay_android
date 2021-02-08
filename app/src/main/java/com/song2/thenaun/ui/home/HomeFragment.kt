@@ -32,7 +32,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             val keyword = binding.etSearch.text.toString()
 
             if (keyword.isNotEmpty())
-                findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundleOf(resources.getString(R.string.search_keyword) to keyword))
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundleOf(KEYWORD to keyword))
         })
     }
 
@@ -83,4 +83,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         HotItem("", "https://pm1.narvii.com/6799/59bddad174e3dcd4ad46ca12f6f8359bba837215v2_hq.jpg", "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", "strawberries", 9, 2),
         HotItem("", "https://pm1.narvii.com/6799/59bddad174e3dcd4ad46ca12f6f8359bba837215v2_hq.jpg", "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", "strawberries", 8, 3)
     )
+
+    companion object{
+        const val KEYWORD = "keyword"
+    }
 }
