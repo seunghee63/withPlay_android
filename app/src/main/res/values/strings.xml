@@ -3,5 +3,8 @@
 
     <string name="home">Home</string>
     <string name="my_page">MyPage</string>
+    <string name="favorite">즐겨찾기</string>
+    <string name="recent">최근기록</string>
+    
     <string name="chat_by_time">시간별 채팅</string>
 </resources>
