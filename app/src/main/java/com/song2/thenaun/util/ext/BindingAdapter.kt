@@ -22,7 +22,7 @@ fun ImageView.bindImageUrl(imageUrl: String?) {
 
 @BindingAdapter("playCnt","viewCnt")
 fun TextView.bindNumData(playCnt: Int, viewCnt: Int) {
-    this.text = String.format(resources.getString(R.string.play_and_viewer_cnt),playCnt)
+    this.text = String.format(resources.getString(R.string.play_and_viewer_cnt),playCnt,viewCnt)
 }
 
 
