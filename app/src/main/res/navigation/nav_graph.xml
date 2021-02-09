@@ -16,4 +16,10 @@
         android:name="com.song2.thenaun.ui.mypage.MyPageFragment"
         android:label="MyPageFragment"
         tools:layout="@layout/fragment_my_page" />
+
+    <fragment
+        android:id="@+id/detailedragment"
+        android:name="com.song2.thenaun.ui.detailed.DetailedFragment"
+        android:label="detailedFragment"
+        tools:layout="@layout/fragment_detailed" />
 </navigation>
