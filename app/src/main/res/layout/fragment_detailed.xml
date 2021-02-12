@@ -122,23 +122,52 @@
                     app:layout_constraintTop_toBottomOf="@id/iv_play_with">
 
                     <TextView
-                        android:id="@+id/chat_by_time_top"
+                        android:id="@+id/tv_comment_top"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="4dp"
-                        android:text="@string/chat_by_time"
+                        android:text="@string/comment_by_time"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_chat_by_time"
+                        android:id="@+id/rv_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingTop="12dp"
+                        app:layoutManager="LinearLayoutManager"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/chat_by_time_top" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_comment_top" />
+
+                    <EditText
+                        android:id="@+id/et_comment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/bg_comment"
+                        android:maxLines="3"
+                        android:minHeight="30dp"
+                        android:paddingHorizontal="20dp"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_btn_send"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rv_comment" />
+
+                    <TextView
+                        android:id="@+id/tv_btn_send"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/bg_comment"
+                        android:padding="4dp"
+                        android:text="@string/comment_send"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et_comment"
+                        app:layout_constraintTop_toBottomOf="@id/rv_comment" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

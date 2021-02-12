@@ -23,9 +23,25 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         initMotionLayout()
+        initialSetting()
     }
 
     override fun initObserver() {}
+
+    private fun initialSetting() {
+        val commentAdapter = CommentAdapter()
+        binding.rvComment.adapter = commentAdapter
+        commentAdapter.submitList(getCommentData())
+    }
+
+    private fun getCommentData() = listOf(
+        CommentItem("0", "04:00", "test1"),
+        CommentItem("0", "04:00", "test1"),
+        CommentItem("0", "04:00", "test1"),
+        CommentItem("0", "04:00", "test1"),
+        CommentItem("0", "04:00", "test1"),
+        CommentItem("0", "04:00", "test1")
+    )
 
     private fun initMotionLayout() {
         binding.videoMotionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
