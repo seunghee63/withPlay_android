@@ -32,6 +32,14 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
         val commentAdapter = CommentAdapter()
         binding.rvComment.adapter = commentAdapter
         commentAdapter.submitList(getCommentData())
+
+        val chatAdapter = ChatAdapter()
+        binding.rvChat.adapter = chatAdapter
+        chatAdapter.submitList(getChatData())
+
+        val chatFriendAdapter = ChatFriendAdapter()
+        binding.rvChatFriend.adapter = chatFriendAdapter
+        chatFriendAdapter.submitList(getChatFriend())
     }
 
     private fun getCommentData() = listOf(
@@ -41,6 +49,23 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
         CommentItem("0", "04:00", "test1"),
         CommentItem("0", "04:00", "test1"),
         CommentItem("0", "04:00", "test1")
+    )
+
+    private fun getChatData() = listOf(
+        ChatItem("0", false, "02:22", 0, "song", "우르르 쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와 ㅎ"),
+        ChatItem("0", true, "02:22", 0, "song", "우르르 쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와쾅쾅쾅코앜와 ㅎ"),
+        ChatItem("0", true, "02:22", 1, "nick", "재밌네 ㅎ"),
+        ChatItem("0", false, "02:22", 1, "nick", "재밌네 ㅎ"),
+        ChatItem("0", false, "02:22", 1, "nick", "재밌네 ㅎ"),
+        ChatItem("0", false, "02:22", 1, "nick", "재밌네 ㅎ"),
+        ChatItem("0", false, "02:22", 0, "song", "재밌네 ㅎ"),
+    )
+
+    private fun getChatFriend() = listOf(
+        ChatFriendItem("0", 0, "song"),
+        ChatFriendItem("0", 1, "nick"),
+        ChatFriendItem("0", 1, "kuu"),
+        ChatFriendItem("0", 0, "sooo"),
     )
 
     private fun initMotionLayout() {

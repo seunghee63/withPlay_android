@@ -9,9 +9,11 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main">#7C4DFF</color>
+    <color name="main_normal">#c2b0f6</color>
     <color name="main_light">#d1c4e9</color>
     <color name="main_light_background">#ede7f6</color>
 
     <color name="gray_normal">#857e7e</color>
+    <color name="gray_light">#d8d8d8</color>
 </resources>
 
