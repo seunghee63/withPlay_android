@@ -1,5 +1,6 @@
 package com.song2.thenaun.util.ext
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -14,5 +15,13 @@ fun ImageView.bindImageUrl(imageUrl: String?) {
             .load(it)
             .transform(CenterCrop(), RoundedCorners(40))
             .into(this)
+    }
+}
+
+@BindingAdapter("visible")
+fun View.setVisible(visible: Boolean) {
+    this.visibility = when(visible){
+        true -> View.VISIBLE
+        false -> View.GONE
     }
 }

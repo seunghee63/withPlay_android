@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.song2.thenaun.ui.detailed.DetailedViewModel" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -45,7 +48,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:padding="15dp">
 
                 <TextView
@@ -78,19 +81,21 @@
                     android:layout_width="82dp"
                     android:layout_height="82dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/bg_btn"
+                    android:background="@drawable/selector_detailed_btn"
+                    android:onClick="@{() -> vm.comment()}"
                     android:padding="12dp"
                     android:src="@drawable/ic_participate"
                     app:layout_constraintEnd_toStartOf="@id/iv_like"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_description" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_description"
+                    app:selected="@{vm.commentStatus}" />
 
                 <ImageView
                     android:id="@+id/iv_like"
                     android:layout_width="82dp"
                     android:layout_height="82dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/bg_btn"
+                    android:background="@drawable/selector_detailed_btn"
                     android:padding="10dp"
                     android:src="@drawable/ic_like"
                     app:layout_constraintEnd_toStartOf="@id/iv_play_with"
@@ -102,12 +107,14 @@
                     android:layout_width="82dp"
                     android:layout_height="82dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/bg_btn"
+                    android:background="@drawable/selector_detailed_btn"
+                    android:onClick="@{() -> vm.chat()}"
                     android:padding="10dp"
                     android:src="@drawable/ic_play_with"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_like"
-                    app:layout_constraintTop_toBottomOf="@id/tv_description" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_description"
+                    app:selected="@{vm.chatStatus}" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_chat"
@@ -117,9 +124,11 @@
                     android:background="@drawable/bg_chatting"
                     android:minHeight="120dp"
                     android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_play_with">
+                    app:layout_constraintTop_toBottomOf="@id/iv_play_with"
+                    app:visible="@{vm.chatStatus}">
 
                     <TextView
                         android:id="@+id/tv_chat_top"
@@ -186,17 +195,19 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_comment"
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/bg_chatting"
                     android:minHeight="120dp"
                     android:padding="10dp"
-                    android:visibility="gone"
+                    app:layout_constraintVertical_bias="0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_play_with">
+                    app:layout_constraintTop_toBottomOf="@id/iv_play_with"
+                    app:visible="@{vm.commentStatus}">
 
                     <TextView
                         android:id="@+id/tv_comment_top"
@@ -215,6 +226,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clipToPadding="false"
+                        android:nestedScrollingEnabled="true"
                         android:paddingTop="12dp"
                         app:layoutManager="LinearLayoutManager"
                         app:layout_constraintStart_toStartOf="parent"

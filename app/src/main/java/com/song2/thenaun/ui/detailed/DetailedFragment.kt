@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.google.android.exoplayer2.util.Util
 import com.song2.thenaun.R
 import com.song2.thenaun.base.BaseFragment
@@ -16,12 +17,14 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
         get() = R.layout.fragment_detailed
 
     private val playViewModel: PlayViewModel by activityViewModels()
+    private val detailedViewModel: DetailedViewModel by viewModels()
 
     private val playerView: CustomExoPlayer by lazy { binding.player }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.vm = detailedViewModel
         initMotionLayout()
         initialSetting()
     }
