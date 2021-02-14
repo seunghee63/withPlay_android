@@ -5,6 +5,10 @@
     <string name="my_page">MyPage</string>
     <string name="favorite">즐겨찾기</string>
     <string name="recent">최근기록</string>
-    
+    <string name="hot_video">인기동영상</string>
+    <string name="now_video">지금 시청중인 동영상</string>
+
+    <string name="play_and_viewer_cnt">"재생수 %d회 | 시청자수 %d명"</string>
+    <string name="play_cnt">"재생수 %d회"</string>    
     <string name="chat_by_time">시간별 채팅</string>
 </resources>
