@@ -4,4 +4,7 @@
     <dimen name="mypage_title_margin_start">24dp</dimen>
     <dimen name="mypage_rv_margin_top">11dp</dimen>
     <dimen name="mypage_rv_item_margin">8dp</dimen>
+
+    <dimen name="page_margin">8dp</dimen>
+    <dimen name="page_width">274dp</dimen>
 </resources>
