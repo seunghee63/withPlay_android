@@ -2,6 +2,9 @@ package com.song2.thenaun.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.song2.thenaun.R
 import com.song2.thenaun.base.BaseFragment
@@ -12,13 +15,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val layoutResId: Int
         get() = R.layout.fragment_home
 
+    private val viewModel = HomeViewModel()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            vm = viewModel
+        }
 
         initialSetting()
     }
 
-    override fun initObserver() {}
+    override fun initObserver() {
+        viewModel.searchEvent.observe(viewLifecycleOwner, Observer {
+            val keyword = binding.etSearch.text.toString()
+
+            if (keyword.isNotEmpty())
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundleOf(KEYWORD to keyword))
+        })
+    }
 
     private fun initialSetting() {
 
@@ -67,4 +83,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         HotItem("", "https://pm1.narvii.com/6799/59bddad174e3dcd4ad46ca12f6f8359bba837215v2_hq.jpg", "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", "strawberries", 9, 2),
         HotItem("", "https://pm1.narvii.com/6799/59bddad174e3dcd4ad46ca12f6f8359bba837215v2_hq.jpg", "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", "strawberries", 8, 3)
     )
+
+    companion object{
+        const val KEYWORD = "keyword"
+    }
 }
