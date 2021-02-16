@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.song2.thenaun.ui.detailed.ChatItem" />
+            type="com.song2.thenaun.ui.detailed.chat.ChatItem" />
 
         <import type="android.view.View" />
     </data>

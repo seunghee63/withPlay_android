@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.song2.thenaun.ui.detailed.CommentItem" />
+            type="com.song2.thenaun.ui.detailed.comment.CommentItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,4 +1,4 @@
-package com.song2.thenaun.ui.detailed
+package com.song2.thenaun.ui.detailed.chat
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

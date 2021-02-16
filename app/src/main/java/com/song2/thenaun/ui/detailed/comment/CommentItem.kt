@@ -1,4 +1,4 @@
-package com.song2.thenaun.ui.detailed
+package com.song2.thenaun.ui.detailed.comment
 
 import com.song2.thenaun.base.recyclerview.BaseItem
 
