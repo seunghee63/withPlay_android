@@ -6,19 +6,16 @@ import com.song2.thenaun.base.BaseViewModel
 
 class DetailedViewModel : BaseViewModel() {
 
-    private val _commentStatus = MutableLiveData<Boolean>(false)
-    val commentStatus : LiveData<Boolean> = _commentStatus
+    private val _tabVisibility = MutableLiveData<Boolean>(true)
+    val tabVisibility: LiveData<Boolean> = _tabVisibility
 
-    private val _chatStatus = MutableLiveData<Boolean>(true)
-    val chatStatus : LiveData<Boolean> = _chatStatus
-
-    fun comment() {
-        _chatStatus.value = false
-        _commentStatus.value = true
+    fun showComment(){
+        if(!_tabVisibility.value!!)
+            _tabVisibility.value = !_tabVisibility.value!!
     }
 
-    fun chat() {
-        _commentStatus.value = false
-        _chatStatus.value = true
+    fun showChat(){
+        if(_tabVisibility.value!!)
+            _tabVisibility.value = !_tabVisibility.value!!
     }
 }

@@ -82,13 +82,13 @@
                     android:layout_height="82dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/selector_detailed_btn"
-                    android:onClick="@{() -> vm.comment()}"
+                    android:onClick="@{() -> vm.showComment()}"
                     android:padding="12dp"
                     android:src="@drawable/ic_participate"
                     app:layout_constraintEnd_toStartOf="@id/iv_like"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_description"
-                    app:selected="@{vm.commentStatus}" />
+                    app:selected="@{vm.tabVisibility}" />
 
                 <ImageView
                     android:id="@+id/iv_like"
@@ -108,13 +108,13 @@
                     android:layout_height="82dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/selector_detailed_btn"
-                    android:onClick="@{() -> vm.chat()}"
+                    android:onClick="@{() -> vm.showChat()}"
                     android:padding="10dp"
                     android:src="@drawable/ic_play_with"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_like"
                     app:layout_constraintTop_toBottomOf="@id/tv_description"
-                    app:selected="@{vm.chatStatus}" />
+                    app:selected="@{!vm.tabVisibility}" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_chat"
@@ -128,7 +128,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_play_with"
-                    app:visible="@{vm.chatStatus}">
+                    app:visible="@{!vm.tabVisibility}">
 
                     <TextView
                         android:id="@+id/tv_chat_top"
@@ -207,7 +207,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_play_with"
-                    app:visible="@{vm.commentStatus}">
+                    app:visible="@{vm.tabVisibility}">
 
                     <TextView
                         android:id="@+id/tv_comment_top"

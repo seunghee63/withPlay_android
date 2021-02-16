@@ -20,8 +20,5 @@ fun ImageView.bindImageUrl(imageUrl: String?) {
 
 @BindingAdapter("visible")
 fun View.setVisible(visible: Boolean) {
-    this.visibility = when(visible){
-        true -> View.VISIBLE
-        false -> View.GONE
-    }
+    this.visibility = if (visible) View.VISIBLE else View.GONE
 }
