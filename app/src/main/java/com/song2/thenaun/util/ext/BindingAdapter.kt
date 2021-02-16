@@ -23,8 +23,9 @@ fun ImageView.bindImageUrl(imageUrl: String?) {
 @BindingAdapter("visible")
 fun View.setVisible(visible: Boolean) {
     this.visibility = if (visible) View.VISIBLE else View.GONE
+}
 
-  @BindingAdapter("playCnt","viewCnt")
+@BindingAdapter("playCnt","viewCnt")
 fun TextView.bindNumData(playCnt: Int, viewCnt: Int) {
     this.text = String.format(resources.getString(R.string.play_and_viewer_cnt),playCnt,viewCnt)
 }
