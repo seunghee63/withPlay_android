@@ -42,13 +42,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/exo_white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/player">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:padding="15dp">
 
                 <TextView
@@ -117,33 +118,43 @@
                     app:selected="@{!vm.tabVisibility}" />
 
                 <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/cl_chat"
+                    android:id="@+id/fragment_chat"
                     android:name="com.song2.thenaun.ui.detailed.chat.ChatFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:minHeight="120dp"
-                    android:padding="10dp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_play_with"
-                    app:visible="@{!vm.tabVisibility}" />
+                    app:layout_constraintTop_toBottomOf="@id/iv_play_with" />
 
                 <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/cl_comment"
+                    android:id="@+id/fragment_comment"
                     android:name="com.song2.thenaun.ui.detailed.comment.CommentFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:minHeight="120dp"
-                    android:padding="10dp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_play_with"
-                    app:layout_constraintVertical_bias="0"
-                    app:visible="@{vm.tabVisibility}" />
+                    app:layout_constraintVertical_bias="0" />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_play_with"
+                    app:layout_constraintVertical_bias="0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
