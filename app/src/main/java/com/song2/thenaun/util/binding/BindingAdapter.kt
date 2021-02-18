@@ -1,4 +1,4 @@
-package com.song2.thenaun.util.ext
+package com.song2.thenaun.util.binding
 
 import android.view.View
 import android.widget.ImageView
@@ -33,4 +33,17 @@ fun TextView.bindNumData(playCnt: Int, viewCnt: Int) {
 @BindingAdapter("setVideoData")
 fun TextView.bindVideoData(cnt: Int) {
     this.text = String.format(resources.getString(R.string.play_cnt),cnt)
+}
+
+@BindingAdapter("bindProgress")
+fun MotionLayout.bindProgress(progress: Float) {
+    this.progress = progress
+    println()
+}
+
+@BindingAdapter("setImageUrl")
+fun ImageView.setImageUrl(profile: String) {
+    Glide.with(context)
+        .load(profile)
+        .into(this)
 }

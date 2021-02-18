@@ -15,6 +15,7 @@ import com.song2.thenaun.databinding.FragmentDetailedBinding
 import com.song2.thenaun.ui.PlayViewModel
 import com.song2.thenaun.ui.detailed.chat.ChatFragment
 import com.song2.thenaun.ui.detailed.comment.CommentFragment
+import com.song2.thenaun.util.custom.CustomExoPlayer
 
 
 class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {

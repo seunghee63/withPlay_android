@@ -1,4 +1,4 @@
-package com.song2.thenaun.ui.detailed
+package com.song2.thenaun.util.custom
 
 import android.content.Context
 import android.net.Uri

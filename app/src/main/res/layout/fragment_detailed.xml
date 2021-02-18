@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.song2.thenaun.ui.detailed.CustomExoPlayer
+        <com.song2.thenaun.util.custom.CustomExoPlayer
             android:id="@+id/player"
             android:layout_width="match_parent"
             android:layout_height="0dp"
