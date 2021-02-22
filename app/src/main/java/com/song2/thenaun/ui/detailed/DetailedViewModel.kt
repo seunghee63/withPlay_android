@@ -10,12 +10,12 @@ class DetailedViewModel : BaseViewModel() {
     val tabVisibility: LiveData<Boolean> = _tabVisibility
 
     fun showComment(){
-        if(!_tabVisibility.value!!)
+        if(_tabVisibility.value == false)
             _tabVisibility.value = !_tabVisibility.value!!
     }
 
     fun showChat(){
-        if(_tabVisibility.value!!)
+        if(_tabVisibility.value == true)
             _tabVisibility.value = !_tabVisibility.value!!
     }
 }
