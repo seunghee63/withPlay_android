@@ -5,6 +5,11 @@
     <string name="my_page">MyPage</string>
     <string name="favorite">즐겨찾기</string>
     <string name="recent">최근기록</string>
+
+    <string name="comment_by_time">시간별 댓글</string>
+    <string name="comment_send">전송</string>
+    <string name="chat_friend">함께하고 있는 친구</string>
+
     <string name="hot_video">인기동영상</string>
     <string name="now_video">지금 시청중인 동영상</string>
 

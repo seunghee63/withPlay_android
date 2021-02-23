@@ -4,11 +4,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.google.android.exoplayer2.util.Util
 import com.song2.thenaun.R
 import com.song2.thenaun.base.BaseFragment
 import com.song2.thenaun.databinding.FragmentDetailedBinding
 import com.song2.thenaun.ui.PlayViewModel
+import com.song2.thenaun.ui.detailed.chat.ChatFragment
+import com.song2.thenaun.ui.detailed.comment.CommentFragment
 
 
 class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
@@ -16,16 +22,35 @@ class DetailedFragment : BaseFragment<FragmentDetailedBinding>() {
         get() = R.layout.fragment_detailed
 
     private val playViewModel: PlayViewModel by activityViewModels()
+    private val detailedViewModel: DetailedViewModel by viewModels()
 
     private val playerView: CustomExoPlayer by lazy { binding.player }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.vm = detailedViewModel
         initMotionLayout()
     }
 
-    override fun initObserver() {}
+    override fun initObserver() {
+        val fm = childFragmentManager
+
+        detailedViewModel.tabVisibility.observe(viewLifecycleOwner, Observer {
+            //백스택 처리
+            if (it) {
+                fm.commit {
+                    replace<CommentFragment>(R.id.fragment_container)
+                    setReorderingAllowed(true)
+                }
+            } else {
+                fm.commit {
+                    replace<ChatFragment>(R.id.fragment_container)
+                    setReorderingAllowed(true)
+                }
+            }
+        })
+    }
 
     private fun initMotionLayout() {
         binding.videoMotionLayout.setTransitionListener(object : MotionLayout.TransitionListener {

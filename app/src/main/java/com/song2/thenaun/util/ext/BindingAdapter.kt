@@ -1,5 +1,6 @@
 package com.song2.thenaun.util.ext
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -17,6 +18,11 @@ fun ImageView.bindImageUrl(imageUrl: String?) {
             .transform(CenterCrop(), RoundedCorners(40))
             .into(this)
     }
+}
+
+@BindingAdapter("visible")
+fun View.setVisible(visible: Boolean) {
+    this.visibility = if (visible) View.VISIBLE else View.GONE
 }
 
 @BindingAdapter("playCnt","viewCnt")
