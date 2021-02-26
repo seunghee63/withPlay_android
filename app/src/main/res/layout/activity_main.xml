@@ -14,7 +14,7 @@
         android:id="@+id/motionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:bindProgress="@{playViewModel.progress}"
+        app:progress="@{playViewModel.progress}"
         app:layoutDescription="@xml/motion_player_main"
         app:motionDebug="SHOW_ALL">
 
