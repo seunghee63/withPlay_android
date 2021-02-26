@@ -46,7 +46,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.song2.thenaun.util.custom.CustomVideoPlayerRecyclerView
             android:id="@+id/rv_search_result"
             android:layout_width="match_parent"
             android:paddingVertical="20dp"
